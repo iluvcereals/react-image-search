@@ -1,10 +1,8 @@
-import { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const GlobalContext = createContext();
-
 export function AppContext({ children }) {
-  const [search, setSearch] = useState('cat');
-
+  const [search, setSearch] = useState('');
   return (
     <GlobalContext.Provider value={{ search, setSearch }}>
       {children}

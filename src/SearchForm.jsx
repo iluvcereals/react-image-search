@@ -3,23 +3,18 @@ import { useGlobalContext } from './context';
 
 function SearchForm() {
   const { setSearch } = useGlobalContext();
-  const [imageSearch, setImageSearch] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
-    setSearch(imageSearch);
-    setImageSearch('');
+    setSearch(() => {
+      return searchTerm;
+    });
   }
   return (
     <form onSubmit={handleSubmit}>
       <div className="input-container">
-        <input
-          type="text"
-          className="form-input"
-          value={imageSearch}
-          onChange={(e) => setImageSearch(e.target.value)}
-          placeholder="cat"
-        />
+        <input type="text" onChange={(e) => setSearchTerm(e.target.value)} />
         <button className="btn">Search</button>
       </div>
     </form>
